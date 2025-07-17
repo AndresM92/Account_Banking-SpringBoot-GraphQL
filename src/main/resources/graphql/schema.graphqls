@@ -1,0 +1,34 @@
+type AccountBanking{
+    id:String,
+    dateCreation:String,
+    balance:String,
+    div:String,
+    typeAccount:String,
+    client:Client
+}
+
+type Client {
+    id:ID
+    nombre:String,
+    accountsBankings:[AccountBanking]
+
+}
+
+input AccountBankingDTO{
+    balance:Float,
+    div:String,
+    typeAccount:String
+}
+
+type Query{
+    listAccounts:[AccountBanking]
+    accountBankingById(id:String):AccountBanking
+    listClients:[Client]
+}
+
+type Mutation{
+    addAccount(accountBanking:AccountBankingDTO):AccountBanking,
+    updateAccount(id:String,accountBanking:AccountBankingDTO):AccountBanking,
+    deleteAccount(id:String):String
+}
+

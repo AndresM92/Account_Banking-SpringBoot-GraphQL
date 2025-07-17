@@ -1,14 +1,13 @@
 package com.abanking.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.Date;
+
 
 @Entity
 @Data
@@ -25,5 +24,8 @@ public class AccountBanking {
 
     @Enumerated(EnumType.STRING)
     private TypeAccount typeAccount;
+
+    @ManyToOne
+    private Client client;
 
 }

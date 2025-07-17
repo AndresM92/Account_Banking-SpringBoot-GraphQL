@@ -34,6 +34,21 @@ public class AccountBankingServiceImpl implements AccountBankingService {
 
         AccountBanking accountBankingBBDD = accountBankingRepository.save(accountBanking);
         AccountBankingResponseDto accountBankingResponseDto= accountBankingMapper.fromAccountBanking(accountBankingBBDD);
-        return null;
+        return accountBankingResponseDto;
+    }
+
+    @Override
+    public AccountBankingResponseDto updateAccount(String id, AccountBankingRequestDto accountBankingRequestDto) {
+        AccountBanking accountBanking = AccountBanking.builder()
+                .id(UUID.randomUUID().toString())
+                .dateCreation(new Date())
+                .balance(accountBankingRequestDto.getBalance())
+                .div(accountBankingRequestDto.getDiv())
+                .typeAccount(accountBankingRequestDto.getTypeAccount())
+                .build();
+
+        AccountBanking accountBankingBBDD = accountBankingRepository.save(accountBanking);
+        AccountBankingResponseDto accountBankingResponseDto= accountBankingMapper.fromAccountBanking(accountBankingBBDD);
+        return accountBankingResponseDto;
     }
 }
